@@ -1,0 +1,6 @@
+{
+  "name": "ADN - Gestion de Fortune",
+  "description": "Gestionnaire de Fortune et d'investissements à Genève.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

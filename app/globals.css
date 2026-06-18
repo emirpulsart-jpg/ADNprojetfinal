@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-display), Georgia, serif;
+  --font-mono: var(--font-mono), monospace;
+  
+  --color-swiss-navy: #0c1b33;
+  --color-swiss-blue: #1e40af;
+  --color-swiss-light: #f8fafc;
+  --color-swiss-accent: #3b82f6;
+  --color-swiss-green: #10b981;
+  --color-swiss-green-dark: #047857;
+}
+
+@layer base {
+  body {
+    background-color: #ffffff;
+    color: #1e293b;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom fade animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
