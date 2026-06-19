@@ -27,7 +27,9 @@ export const metadata: Metadata = {
   title: 'ADN | Gestionnaire de Fortune - Genève',
   description: 'Cabinet suisse indépendant de gestion de fortune privée et de conseils financiers pour particuliers et holdings.',
   icons: {
-    icon: '/ADN.svg',
+    icon: '/ADN.png',
+    shortcut: '/ADN.png',
+    apple: '/ADN.png',
   },
 };
 

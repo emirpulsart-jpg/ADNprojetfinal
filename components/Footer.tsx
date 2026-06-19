@@ -2,10 +2,19 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Shield, Landmark, MapPin, Phone, Mail } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+
+  const scrollToPhilosophy = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      document.getElementById('transparence-totale')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <footer className="bg-swiss-navy text-white/90 border-t border-slate-800" id="app-footer animate-fade-in">
@@ -33,12 +42,10 @@ export default function Footer() {
 
             {/* Swiss Trust Seals */}
             <div className="flex items-center gap-4 pt-2 flex-wrap">
-              <div className="flex items-center gap-2 rounded-none border border-white/10 bg-white/5 py-1.5 px-3">
-                <Shield className="h-4 w-4 text-[#10b981]" />
+              <div className="rounded-none border border-white/10 bg-white/5 py-1.5 px-3">
                 <span className="font-sans text-[9px] uppercase tracking-wider font-bold text-slate-300">Conformité FINMA / LEFin</span>
               </div>
-              <div className="flex items-center gap-2 rounded-none border border-white/10 bg-white/5 py-1.5 px-3">
-                <Landmark className="h-4 w-4 text-[#10b981]" />
+              <div className="rounded-none border border-white/10 bg-white/5 py-1.5 px-3">
                 <span className="font-sans text-[9px] uppercase tracking-wider font-bold text-slate-300">Place Financière Suisse</span>
               </div>
             </div>
@@ -61,7 +68,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#a-propos" className="text-slate-300 hover:text-white transition-colors">
+                <Link href="/#transparence-totale" onClick={scrollToPhilosophy} className="text-slate-300 hover:text-white transition-colors">
                   Notre Philosophie
                 </Link>
               </li>
@@ -71,7 +78,7 @@ export default function Footer() {
           {/* Contact block (Span 4) */}
           <div className="md:col-span-4 space-y-5">
             <h3 className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#10b981]">
-              Cabinet de Genève
+              Nous contacter
             </h3>
             <ul className="space-y-4 font-sans text-sm text-slate-300">
               <li className="flex items-start gap-3">

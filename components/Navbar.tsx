@@ -51,6 +51,18 @@ export default function Navbar() {
     return () => clearTimeout(timer);
   }, [pathname]);
 
+  const philosophyHref = '/#transparence-totale';
+
+  const scrollToPhilosophy = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsOpen(false);
+    setDropdownOpen(false);
+
+    if (pathname === '/') {
+      e.preventDefault();
+      document.getElementById('transparence-totale')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const navItems = [
     { label: 'Accueil', href: '/' },
     {
@@ -62,7 +74,7 @@ export default function Navbar() {
         { label: 'Compte professionnel', href: '/expertises/gestion-corporate', desc: 'Fructifier la trésorerie de votre société.' },
       ],
     },
-    { label: 'Notre Philosophie', href: '/#a-propos' },
+    { label: 'Notre Philosophie', href: philosophyHref, onClick: scrollToPhilosophy },
     { label: 'Contact', href: '/contact' },
   ];
 
@@ -161,6 +173,7 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={item.onClick}
                   className={cn(
                     "font-sans text-[11px] uppercase tracking-[0.15em] font-bold text-slate-600 transition-colors py-2",
                     isActive && "text-swiss-blue font-extrabold border-b border-swiss-blue"
@@ -236,6 +249,7 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={item.onClick}
                   className={cn(
                     "block rounded-none py-2.5 px-3 text-sm font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50 hover:text-swiss-blue transition-colors border-b border-slate-50",
                     isActive && "bg-slate-50 text-swiss-blue font-extrabold"

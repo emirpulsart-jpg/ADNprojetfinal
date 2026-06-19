@@ -4,7 +4,6 @@ import * as React from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  ShieldCheck,
   Landmark,
   ArrowRight,
   ChevronDown,
@@ -76,6 +75,19 @@ export default function HomePage() {
 
   // FAQ state - only one open at a time
   const [openFaq, setOpenFaq] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    if (window.location.hash !== '#transparence-totale') return;
+    const timer = window.setTimeout(() => {
+      document.getElementById('transparence-totale')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const scrollToPhilosophy = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.getElementById('transparence-totale')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const years = ['2020', '2021', '2022', '2023', '2024', '2025'];
 
@@ -445,7 +457,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. UNE TRANSPARENCE TOTALE SECTION & INTERACTIVE SCHEMA */}
-      <section className="bg-white py-24 border-b border-gray-100" id="transparence-totale">
+      <section className="bg-white py-24 border-b border-gray-100 scroll-mt-24" id="transparence-totale">
         <div className="mx-auto max-w-6xl px-6 lg:px-12">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -478,126 +490,95 @@ export default function HomePage() {
                 Modèle d&apos;architecture ouverte ADN
               </h3>
               
-              {/* Triangular layout with relations */}
-              <div className="grid grid-cols-1 gap-8 md:gap-4 relative pt-4 pb-4">
-                
-                {/* 1. NODE: CLIENT */}
-                <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="flex flex-col items-center justify-center text-center z-10"
-                >
-                  <div className="bg-white border-2 border-swiss-navy min-w-[200px] hover:border-swiss-blue transition-colors px-6 py-4 rounded-xl shadow-sm text-center">
-                    <User className="h-6 w-6 text-swiss-navy mx-auto mb-1.5" />
-                    <h4 className="font-sans font-extrabold text-xs uppercase tracking-widest text-swiss-navy">Client</h4>
-                    <p className="font-sans text-[10px] text-slate-400 mt-1">Titulaire exclusif de son compte</p>
+              {/* Schéma horizontal flex : traits réels entre les blocs */}
+              <div className="w-full max-w-xl mx-auto py-2 pb-40 sm:pb-44">
+
+                <div className="flex items-center w-full">
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="shrink-0 w-[84px] sm:w-[96px]"
+                  >
+                    <div className="bg-white border-2 border-swiss-navy px-2.5 py-3 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center">
+                      <User className="h-4 w-4 text-swiss-navy mx-auto mb-1" />
+                      <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-widest text-swiss-navy">Client</h4>
+                      <p className="font-sans text-[8px] sm:text-[9px] text-slate-400 mt-0.5 leading-snug">Titulaire exclusif</p>
+                    </div>
+                  </motion.div>
+
+                  <div className="h-[2px] flex-1 bg-swiss-blue min-w-[12px] shrink" aria-hidden="true" />
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.08 }}
+                    className="shrink-0 w-[108px] sm:w-[128px]"
+                  >
+                    <div className="bg-white border-2 border-swiss-navy px-2.5 py-3 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center">
+                      <Landmark className="h-4 w-4 text-swiss-navy mx-auto mb-1" />
+                      <h4 className="font-sans font-extrabold text-[9px] sm:text-[10px] uppercase tracking-wider text-swiss-navy leading-snug">Banque dépositaire</h4>
+                      <p className="font-sans text-[8px] text-slate-400 mt-0.5">Conservation sûre</p>
+                    </div>
+                  </motion.div>
+
+                  {/* Trait Banque → Bourse + branche ADN en dessous */}
+                  <div className="flex-1 min-w-[12px] shrink relative flex items-center self-stretch">
+                    <div className="w-full h-[2px] bg-swiss-blue" aria-hidden="true" />
+
+                    <div className="absolute left-0 right-0 top-1/2 flex flex-col items-center">
+                      <div className="flex justify-around w-full max-w-[210px]">
+                        <div className="flex flex-col items-center px-1">
+                          <div className="w-[2px] h-11 sm:h-14 bg-[#10b981]/75" />
+                          <p className="font-sans text-[8px] sm:text-[9px] uppercase tracking-wide text-slate-500 mt-2 text-center leading-tight max-w-[72px]">
+                            Demande d&apos;achat
+                          </p>
+                        </div>
+                        <div className="flex flex-col items-center px-1">
+                          <div className="w-[2px] h-11 sm:h-14 bg-[#10b981]/75" />
+                          <p className="font-sans text-[8px] sm:text-[9px] uppercase tracking-wide text-slate-500 mt-2 text-center leading-tight max-w-[72px]">
+                            Demande de vente
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="w-[2px] h-7 bg-slate-300 mt-1" aria-hidden="true" />
+
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.28 }}
+                        className="mt-1"
+                      >
+                        <div className="bg-emerald-50/60 border border-dashed border-[#10b981]/50 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl shadow-xs text-center w-[148px] sm:w-[165px]">
+                          <img src="/ADN.png" alt="ADN Finance" className="h-7 sm:h-8 w-auto mx-auto mb-1 object-contain" />
+                          <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-wider text-swiss-navy">ADN Finance</h4>
+                          <p className="font-sans text-[8px] uppercase tracking-widest text-[#10b981] font-bold mt-0.5">Mandat auxiliaire</p>
+                        </div>
+                      </motion.div>
+                    </div>
                   </div>
-                </motion.div>
 
-                {/* SVG Connecting Flow lines (Desktop view and Mobile view) */}
-                <div className="hidden md:block absolute inset-0 pointer-events-none z-0" style={{ minHeight: '340px' }}>
-                  <svg className="w-full h-full" viewBox="0 0 500 340">
-                    <defs>
-                      <linearGradient id="glow-line-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#0c1b33" />
-                        <stop offset="100%" stopColor="#1e40af" />
-                      </linearGradient>
-                      <linearGradient id="glow-line-2" x1="100%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#0c1b33" />
-                        <stop offset="100%" stopColor="#10b981" />
-                      </linearGradient>
-                    </defs>
-
-                    {/* Left path (Client to ADN Finance) */}
-                    <motion.path 
-                      className="stroke-slate-200" 
-                      strokeWidth="2" 
-                      fill="none" 
-                      d="M 215,65 Q 110,65 110,185"
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.2, ease: "easeInOut" }}
-                    />
-                    
-                    {/* Right path (Client to Banque Dépositaire) */}
-                    <motion.path 
-                      className="stroke-slate-200" 
-                      strokeWidth="2" 
-                      fill="none" 
-                      d="M 285,65 Q 390,65 390,185"
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.2, ease: "easeInOut", delay: 0.1 }}
-                    />
-
-                    {/* Bottom connecting path (ADN Finance and Banque) */}
-                    <motion.path 
-                      className="stroke-slate-205" 
-                      strokeWidth="2" 
-                      strokeDasharray="4 4"
-                      fill="none" 
-                      d="M 160,215 L 340,215"
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
-                    />
-
-                    {/* Direction arrows or indicator sparks on routes */}
-                    <circle r="4" fill="#1e40af">
-                      <animateMotion dur="4s" repeatCount="indefinite" path="M 215,65 Q 110,65 110,185" />
-                    </circle>
-                    <circle r="4" fill="#10b981">
-                      <animateMotion dur="4.2s" repeatCount="indefinite" path="M 285,65 Q 390,65 390,185" />
-                    </circle>
-                  </svg>
-                </div>
-
-                {/* Left/Right visual cards on Desktop */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pt-0 md:pt-12 relative z-10">
-                  
-                  {/* 2. NODE: ADN FINANCE (Bottom Left) */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="flex flex-col items-center justify-center text-center"
+                    transition={{ delay: 0.16 }}
+                    className="shrink-0 w-[76px] sm:w-[88px]"
                   >
-                    <div className="bg-white border border-slate-200 min-w-[190px] px-5 py-4 rounded-xl shadow-xs text-center">
-                      <Coins className="h-5 w-5 text-swiss-blue mx-auto mb-1" />
-                      <h4 className="font-sans font-extrabold text-xs uppercase tracking-wider text-swiss-navy">ADN FINANCE</h4>
-                      <p className="font-sans text-[8px] uppercase tracking-widest text-[#10b981] font-bold mt-1">Gestionnaire d&apos;actifs</p>
-                      <p className="font-sans text-[10px] text-slate-400 mt-1 leading-normal">Stratégies &amp; Arbitrage fiduciaire</p>
+                    <div className="bg-white border-2 border-swiss-navy px-2.5 py-3 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center">
+                      <TrendingUp className="h-4 w-4 text-swiss-navy mx-auto mb-1" />
+                      <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-widest text-swiss-navy">Bourse</h4>
+                      <p className="font-sans text-[8px] sm:text-[9px] text-slate-400 mt-0.5">Marchés</p>
                     </div>
                   </motion.div>
-
-                  {/* 3. NODE: BANQUE DÉPOSITAIRE (Bottom Right) */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="flex flex-col items-center justify-center text-center"
-                  >
-                    <div className="bg-white border border-slate-205 min-w-[190px] px-5 py-4 rounded-xl shadow-xs text-center">
-                      <Landmark className="h-5 w-5 text-slate-500 mx-auto mb-1" />
-                      <h4 className="font-sans font-extrabold text-xs uppercase tracking-wider text-swiss-navy">BANQUE DÉPOSITAIRE</h4>
-                      <p className="font-sans text-[8px] uppercase tracking-widest text-slate-400 font-bold mt-1">Conservation sûre</p>
-                      <p className="font-sans text-[10px] text-slate-400 mt-1 leading-normal">Liquidités &amp; Dépôt physique (FINMA)</p>
-                    </div>
-                  </motion.div>
-
                 </div>
 
-                {/* Subtext descriptions on Desktop lines */}
-                <div className="hidden md:block text-slate-500 font-sans text-[10px] leading-relaxed relative pt-6 text-center space-y-2 mt-4">
+                <div className="hidden md:block text-slate-500 font-sans text-[10px] leading-relaxed pt-4 text-center mt-40 sm:mt-44">
                   <p className="max-w-md mx-auto py-1 px-3 bg-white border border-slate-100 italic">
-                    <strong>Relation sans conflit d&apos;intérêts :</strong> Le Client délègue uniquement un mandat de gestion de fortune à ADN Finance sans jamais lui conférer de pouvoir de détention. Vos fonds restent en sécurité intégrale au sein de votre banque dépositaire.
+                    <strong>Le Client ne dépend pas d&apos;ADN Finance :</strong> il est en relation directe avec sa banque dépositaire et la bourse. ADN intervient uniquement sur mandat d&apos;achat ou de vente, sans détention des fonds.
                   </p>
                 </div>
 
@@ -679,9 +660,6 @@ export default function HomePage() {
             {/* Card 1: Préservation */}
             <div className="bg-slate-50 border border-slate-100 hover:border-swiss-blue/15 transition-all duration-300 p-8 flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="h-10 w-10 bg-swiss-navy/5 text-swiss-navy flex items-center justify-center">
-                  <ShieldCheck className="h-5 w-5" />
-                </div>
                 <h3 className="font-sans text-base font-bold text-swiss-navy uppercase tracking-wide">
                   Préservation du capital
                 </h3>
@@ -700,9 +678,6 @@ export default function HomePage() {
             {/* Card 2: Optimisation */}
             <div className="bg-slate-50 border border-slate-100 hover:border-swiss-blue/15 transition-all duration-300 p-8 flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="h-10 w-10 bg-[#1e40af]/5 text-[#1e40af] flex items-center justify-center">
-                  <TrendingUp className="h-5 w-5" />
-                </div>
                 <h3 className="font-sans text-base font-bold text-swiss-navy uppercase tracking-wide">
                   Optimisation des rendements
                 </h3>
@@ -721,9 +696,6 @@ export default function HomePage() {
             {/* Card 3: Diversification */}
             <div className="bg-slate-50 border border-slate-100 hover:border-swiss-blue/15 transition-all duration-300 p-8 flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="h-10 w-10 bg-emerald-50 text-[#10b981] flex items-center justify-center">
-                  <Coins className="h-5 w-5" />
-                </div>
                 <h3 className="font-sans text-base font-bold text-swiss-navy uppercase tracking-wide">
                   Diversification des investissements
                 </h3>
@@ -898,7 +870,8 @@ export default function HomePage() {
                 Être contacté par un expert financier
               </Link>
               <Link
-                href="/#a-propos"
+                href="/#transparence-totale"
+                onClick={scrollToPhilosophy}
                 className="w-full sm:w-auto inline-flex h-12 items-center justify-center border border-white/20 bg-white/5 text-white px-8 font-sans text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all"
               >
                 Découvrir notre philosophie
