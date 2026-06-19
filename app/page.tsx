@@ -17,19 +17,19 @@ import {
   Info
 } from 'lucide-react';
 
-// Historic multipliers (2020-2025)
+// Historic multipliers (2020-2025) — rendements cumulés sur la période
 const DATA_MULTIPLIERS = {
-  nvidia: [1.0, 1.6, 2.4, 3.8, 6.2, 9.5],      // ~ +850%
-  apple: [1.0, 1.25, 1.5, 1.75, 2.1, 3.2],    // ~ +220%
-  microsoft: [1.0, 1.2, 1.45, 1.7, 2.2, 2.9],  // ~ +190%
-  epargne: [1.0, 0.94, 0.89, 0.84, 0.79, 0.74], // Devaluation by inflation (~ -26% real purchasing power loss)
+  nvidia: [1.0, 1.97, 3.9, 7.7, 15.19, 31.4],       // +3 040 %
+  apple: [1.0, 1.3, 1.7, 2.22, 2.89, 3.8],          // +280 %
+  microsoft: [1.0, 1.27, 1.62, 2.06, 2.62, 3.4],   // +240 %
+  epargne: [1.0, 0.99, 0.98, 0.96, 0.95, 0.939],    // Inflation suisse +6,5 % (pouvoir d'achat)
 };
 
 const COMPANY_META = {
   nvidia: { name: 'Nvidia Corp (NVDA)', color: '#10b981', label: 'Tech & Intelligence Artificielle' },
   apple: { name: 'Apple Inc (AAPL)', color: '#3b82f6', label: 'Écosystème Global & Services Mobile' },
   microsoft: { name: 'Microsoft Corp (MSFT)', color: '#6366f1', label: 'Infrastructure Cloud & IA' },
-  epargne: { name: 'Épargne Classique', color: '#f97316', label: 'Taux passifs suisses bas' },
+  epargne: { name: 'Inflation suisse', color: '#f97316', label: 'Indice des prix à la consommation (+6,5 %)' },
 };
 
 // Single Question/Answer Accordion
@@ -105,33 +105,26 @@ export default function HomePage() {
   // Multiplier peak reference
   const maxValOfStock = stockData[5]; // Dynamically scale based on selected stock peak
 
-  // Dynamic visual scale factor that makes the curves stretch/condense vertically based on 'amount'.
-  // This will make the graph lines move and grow in real-time as the slider is dragged.
-  const visualScaleFactor = 0.15 + 0.85 * (amount / 2000000);
+  // Dynamic visual scale factor — légèrement accentué pour la lisibilité des pentes
+  const visualScaleFactor = (0.15 + 0.85 * (amount / 2000000)) * 1.25;
 
   const getPoints = (multipliers: number[]) => {
     return multipliers.map((val, idx) => {
       const x = pad + (idx / 5) * graphWidth;
-      
-      // Position the y starting point of 1.0 at 75% height of the graph.
-      // This leaves 75% of the graph height for growth and 25% for devaluation.
+
       const yStart = pad + graphHeight * 0.75;
-      
+
       let y = yStart;
       if (val >= 1.0) {
-        // Linear mapping for values >= 1.0 up to maxValOfStock
         const normalizedGrowth = (val - 1.0) / Math.max(0.1, maxValOfStock - 1.0);
-        // Map to range [pad, yStart]
         const growthHeight = yStart - pad;
-        y = yStart - (normalizedGrowth * growthHeight * visualScaleFactor);
+        y = yStart - normalizedGrowth * growthHeight * visualScaleFactor;
       } else {
-        // Linear mapping for values < 1.0 down to 0.70
-        // e.g. if val goes from 1.0 to 0.70, map it to descend from yStart towards pad + graphHeight
-        const normalizedLoss = (1.0 - val) / 0.30; // 0.30 covers decrease from 1.0 down to 0.70
+        const normalizedLoss = (1.0 - val) / 0.30;
         const lossHeight = (pad + graphHeight) - yStart;
-        y = yStart + (normalizedLoss * lossHeight * visualScaleFactor);
+        y = yStart + normalizedLoss * lossHeight * visualScaleFactor;
       }
-      
+
       return { x, y, value: val };
     });
   };
@@ -176,7 +169,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center gap-1.5">
               <span className="h-2 w-4 bg-[#ef4444] inline-block"></span>
-              <span className="text-slate-600 font-bold uppercase">Épargne Standard</span>
+              <span className="text-slate-600 font-bold uppercase">Inflation suisse</span>
             </div>
           </div>
         </div>
@@ -348,7 +341,7 @@ export default function HomePage() {
 
         <div className="p-4 bg-slate-50">
           <span className="text-[10px] uppercase tracking-wider text-slate-400 block mb-1">
-            Épargne de dépôt ({years[5]})
+            Pouvoir d&apos;achat ({years[5]})
           </span>
           <p className="text-xl font-bold text-swiss-navy">
             {formatCHF(finalEpargneVal)}
@@ -485,13 +478,13 @@ export default function HomePage() {
             </div>
 
             {/* Premium Animated SVG Flowchart */}
-            <div className="lg:col-span-7 bg-slate-50/50 border border-slate-100/80 px-2 pt-4 pb-12 sm:p-8 rounded-none relative overflow-visible">
+            <div className="lg:col-span-7 bg-slate-50/50 border border-slate-100/80 px-2 pt-4 pb-10 sm:px-8 sm:pt-8 sm:pb-5 md:pb-4 rounded-none relative overflow-visible">
               <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-swiss-navy border-b border-slate-100 pb-3 mb-4 sm:mb-6 text-center">
                 Modèle d&apos;architecture ouverte ADN
               </h3>
               
               {/* Schéma horizontal flex — branche ADN dans le segment Banque–Bourse */}
-              <div className="w-full max-w-none sm:max-w-xl mx-auto py-1 pb-52 sm:pb-44 overflow-visible">
+              <div className="w-full max-w-none sm:max-w-xl mx-auto py-1 pb-48 md:pb-28 lg:pb-24 overflow-visible">
 
                 <div className="flex items-center w-full min-w-0">
                   <motion.div
@@ -578,7 +571,7 @@ export default function HomePage() {
                   </motion.div>
                 </div>
 
-                <div className="hidden md:block text-slate-500 font-sans text-[10px] leading-relaxed pt-4 text-center md:mt-52 lg:mt-60">
+                <div className="hidden md:block text-slate-500 font-sans text-[10px] leading-relaxed pt-4 text-center md:mt-56 lg:mt-[15.5rem]">
                   <p className="max-w-md mx-auto py-1 px-3 bg-white border border-slate-100 italic">
                     <strong>Le Client ne dépend pas d&apos;ADN Finance :</strong> il est en relation directe avec sa banque dépositaire et la bourse. ADN intervient uniquement sur mandat d&apos;achat ou de vente, sans détention des fonds.
                   </p>
@@ -598,7 +591,7 @@ export default function HomePage() {
           
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="font-sans text-xs font-bold uppercase tracking-[0.25em] text-swiss-blue block mb-2">
-              Chiffres clés de notre engagement
+              Piliers clés de notre engagement
             </span>
             <h2 className="font-display text-2xl sm:text-3xl font-light text-swiss-navy tracking-tight">
               À PROPOS DE NOUS

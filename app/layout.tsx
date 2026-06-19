@@ -26,11 +26,6 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'ADN | Gestionnaire de Fortune - Genève',
   description: 'Cabinet suisse indépendant de gestion de fortune privée et de conseils financiers pour particuliers et holdings.',
-  icons: {
-    icon: '/ADN.png',
-    shortcut: '/ADN.png',
-    apple: '/ADN.png',
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -132,7 +132,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-display text-2xl font-light text-swiss-navy mb-2">Formulaire de Consultation</h3>
                   <p className="font-sans text-xs text-gray-500">
-                    Les informations transmises restent cryptées de bout en bout et strictement confidentielles sous le secret de gérance financière suisse.
+                    Les informations transmises sont traitées en toute confidentialité et strictement protégées sous le secret de gérance financière suisse.
                   </p>
                 </div>
 
