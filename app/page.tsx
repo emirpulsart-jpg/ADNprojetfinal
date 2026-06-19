@@ -76,14 +76,6 @@ export default function HomePage() {
   // FAQ state - only one open at a time
   const [openFaq, setOpenFaq] = React.useState<number | null>(null);
 
-  React.useEffect(() => {
-    if (window.location.hash !== '#transparence-totale') return;
-    const timer = window.setTimeout(() => {
-      document.getElementById('transparence-totale')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
-    return () => window.clearTimeout(timer);
-  }, []);
-
   const scrollToPhilosophy = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     document.getElementById('transparence-totale')?.scrollIntoView({ behavior: 'smooth', block: 'start' });

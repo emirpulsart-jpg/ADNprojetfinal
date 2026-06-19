@@ -94,8 +94,8 @@ export default function GestionCorporatePage() {
 
           <div className="lg:col-span-5 bg-slate-50 border border-slate-100 p-8 space-y-6">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 flex items-center justify-center bg-swiss-navy text-white font-sans text-lg font-bold">
-                C
+              <div className="h-10 w-10 flex items-center justify-center bg-white border border-slate-200 text-swiss-blue">
+                <Building className="h-5 w-5 stroke-[1.2]" />
               </div>
               <div>
                 <h3 className="font-sans text-xs font-bold text-swiss-navy uppercase tracking-wider">Profil professionnel</h3>

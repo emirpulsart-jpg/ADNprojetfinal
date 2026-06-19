@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import {
-  Gem,
+  PieChart,
   Award,
   KeyRound,
   Layers,
@@ -10,7 +10,8 @@ import {
   CheckCircle,
   Landmark,
   TrendingUp,
-  Shield
+  Shield,
+  Users
 } from 'lucide-react';
 
 export default function GestionPriveePage() {
@@ -18,7 +19,7 @@ export default function GestionPriveePage() {
     {
       title: 'Allocation patrimoniale sur mesure',
       desc: "Nous construisons une répartition cohérente avec votre profil, votre horizon et vos objectifs — actions, obligations, liquidités et diversification géographique — tout en conservant la clarté et la maîtrise de votre situation.",
-      icon: Gem
+      icon: PieChart
     },
     {
       title: 'Indépendance & transparence totale',
@@ -93,8 +94,8 @@ export default function GestionPriveePage() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-slate-200/20 rounded-full filter blur-xl pointer-events-none" />
 
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 flex items-center justify-center bg-swiss-navy text-white font-sans text-lg font-bold">
-                P
+              <div className="h-10 w-10 flex items-center justify-center bg-white border border-slate-200 text-swiss-blue">
+                <Users className="h-5 w-5 stroke-[1.2]" />
               </div>
               <div>
                 <h3 className="font-sans text-xs font-bold text-swiss-navy uppercase tracking-wider">Profil privé</h3>

@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond, JetBrains_Mono } from 'next/font/google';
 import './globals.css'; // Global styles
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${inter.variable} ${cormorantGaramond.variable} ${jetbrainsMono.variable} scroll-smooth`}>
       <body suppressHydrationWarning className="font-sans min-h-screen flex flex-col bg-white text-slate-800 antialiased">
+        <ScrollToTop />
         <Navbar />
         <main className="flex-grow flex flex-col">
           {children}
