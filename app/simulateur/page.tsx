@@ -409,7 +409,7 @@ export default function SimulateurPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/contact"
+              href="/contact-us"
               className="inline-flex h-11 items-center justify-center bg-swiss-navy text-white px-8 font-sans text-xs font-bold uppercase tracking-widest hover:bg-swiss-blue transition-all"
             >
               Prendre contact en toute discrétion

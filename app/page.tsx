@@ -335,7 +335,7 @@ export default function HomePage() {
             {formatCHF(finalStockVal)}
           </p>
           <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 mt-1 inline-block">
-            + {Math.round((stockData[5] - 1) * 100)}% de plus-value brute
+            + {Math.round((stockData[5] - 1) * 100)}% de plus-value
           </span>
         </div>
 
@@ -437,7 +437,7 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="w-full sm:w-auto inline-flex h-12 items-center justify-center bg-swiss-navy text-white px-8 font-sans text-xs font-bold uppercase tracking-widest hover:bg-swiss-blue transition-all"
                 id="hero-cta-contact"
               >
@@ -859,7 +859,7 @@ export default function HomePage() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="w-full sm:w-auto inline-flex h-12 items-center justify-center bg-[#10b981] text-white hover:bg-emerald-600 px-8 font-sans text-xs font-bold uppercase tracking-widest transition-all shadow-sm"
               >
                 Être contacté par un expert financier

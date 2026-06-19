@@ -26,7 +26,7 @@ export default function ExpertisesPage() {
             <span className="font-serif italic font-medium text-swiss-blue">adaptée à vos exigences</span>
           </h1>
           <p className="font-sans text-base text-gray-500 leading-relaxed max-w-2xl">
-            Que vous souhaitiez préserver votre patrimoine intergénérationnel ou fructifier la trésorerie stratégique de votre entreprise, nos experts chevronnés conçoivent la structure parfaite sous la juridiction helvétique.
+            Que vous souhaitiez préserver votre patrimoine intergénérationnel ou optimiser l&apos;allocation de la trésorerie de votre entreprise, nos experts conçoivent une structure adaptée sous la juridiction helvétique.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export default function ExpertisesPage() {
 
             <div className="pt-8">
               <Link
-                href="/expertises/gestion-privee"
+                href="/gestion-de-fortune"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-swiss-navy group border-b border-swiss-navy/20 pb-1 hover:text-swiss-blue hover:border-swiss-blue transition-all"
               >
                 <span>Voir le compte personnel/privé</span>
@@ -93,7 +93,7 @@ export default function ExpertisesPage() {
               </div>
 
               <p className="font-sans text-sm text-gray-500 leading-relaxed">
-                Faites travailler et fructifier les excédents de trésorerie de votre société.
+                Optimisez l&apos;allocation des excédents de trésorerie de votre société.
               </p>
 
               <ul className="space-y-2.5 pt-4 text-xs font-medium text-gray-600 font-sans">
@@ -114,7 +114,7 @@ export default function ExpertisesPage() {
 
             <div className="pt-8">
               <Link
-                href="/expertises/gestion-corporate"
+                href="/gestion-corporate"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-swiss-navy group border-b border-swiss-navy/20 pb-1 hover:text-swiss-blue hover:border-swiss-blue transition-all"
               >
                 <span>Voir le compte professionnel</span>

@@ -70,12 +70,12 @@ export default function Navbar() {
       href: '/expertises',
       isDropdown: true,
       subItems: [
-        { label: 'Compte personnel/privé', href: '/expertises/gestion-privee', desc: 'Compte personnel sans engagement, retraits libres.' },
-        { label: 'Compte professionnel', href: '/expertises/gestion-corporate', desc: 'Fructifier la trésorerie de votre société.' },
+        { label: 'Compte personnel/privé', href: '/gestion-de-fortune', desc: 'Gestion de patrimoine en nom propre.' },
+        { label: 'Compte professionnel', href: '/gestion-corporate', desc: 'Fructifier la trésorerie de votre société.' },
       ],
     },
     { label: 'Notre Philosophie', href: philosophyHref, onClick: scrollToPhilosophy },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Contact', href: '/contact-us' },
   ];
 
   const isHome = pathname === '/';
@@ -129,7 +129,7 @@ export default function Navbar() {
                     <button
                       className={cn(
                         "flex items-center gap-1 font-sans text-[11px] uppercase tracking-[0.15em] font-bold text-slate-600 transition-colors hover:text-swiss-blue focus:outline-none",
-                        pathname.startsWith('/expertises') && "text-swiss-blue font-bold"
+                        (pathname.startsWith('/expertises') || pathname.startsWith('/gestion-de-fortune') || pathname.startsWith('/gestion-corporate')) && "text-swiss-blue font-bold"
                       )}
                     >
                       {item.label}
@@ -188,7 +188,7 @@ export default function Navbar() {
           {/* Call to Action - Right Side */}
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="/contact"
+              href="/contact-us"
               className="inline-flex h-10 items-center justify-center px-5 py-2 text-[11px] uppercase tracking-widest font-bold transition-all duration-300 bg-swiss-navy text-white hover:bg-swiss-blue"
             >
               Prendre rendez-vous
@@ -268,7 +268,7 @@ export default function Navbar() {
                 1207, Genève, Suisse
               </div>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="flex w-full h-12 items-center justify-center bg-swiss-navy text-white font-sans text-xs font-semibold uppercase tracking-widest hover:bg-swiss-blue transition-all"
               >
                 Être contacté par un expert

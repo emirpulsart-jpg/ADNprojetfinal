@@ -58,12 +58,17 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3 font-sans text-sm">
               <li>
-                <Link href="/expertises/gestion-privee" className="text-slate-300 hover:text-white transition-colors">
+                <Link href="/propos" className="text-slate-300 hover:text-white transition-colors">
+                  À propos
+                </Link>
+              </li>
+              <li>
+                <Link href="/gestion-de-fortune" className="text-slate-300 hover:text-white transition-colors">
                   Compte personnel/privé
                 </Link>
               </li>
               <li>
-                <Link href="/expertises/gestion-corporate" className="text-slate-300 hover:text-white transition-colors">
+                <Link href="/gestion-corporate" className="text-slate-300 hover:text-white transition-colors">
                   Compte professionnel
                 </Link>
               </li>
@@ -116,9 +121,10 @@ export default function Footer() {
           <div>
             &copy; {currentYear} ADN FINANCE SA, Genève. Tous droits réservés.
           </div>
-          <div className="flex gap-6">
-            <Link href="/contact" className="hover:text-white transition-colors">Protection des Données</Link>
-            <Link href="/contact" className="hover:text-white transition-colors">Politique de Secret</Link>
+          <div className="flex flex-wrap gap-6 justify-center sm:justify-end">
+            <Link href="/planificateur-dinterets-composes" className="hover:text-white transition-colors">Planificateur d&apos;intérêts composés</Link>
+            <Link href="/protection-des-donnees" className="hover:text-white transition-colors">Protection des Données</Link>
+            <Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link>
           </div>
         </div>
 
