@@ -485,76 +485,78 @@ export default function HomePage() {
             </div>
 
             {/* Premium Animated SVG Flowchart */}
-            <div className="lg:col-span-7 bg-slate-50/50 border border-slate-100/80 p-6 sm:p-8 rounded-none relative">
-              <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-swiss-navy border-b border-slate-100 pb-3 mb-6 text-center">
+            <div className="lg:col-span-7 bg-slate-50/50 border border-slate-100/80 px-2 pt-4 pb-12 sm:p-8 rounded-none relative overflow-visible">
+              <h3 className="font-sans text-xs font-bold uppercase tracking-wider text-swiss-navy border-b border-slate-100 pb-3 mb-4 sm:mb-6 text-center">
                 Modèle d&apos;architecture ouverte ADN
               </h3>
               
-              {/* Schéma horizontal flex : traits réels entre les blocs */}
-              <div className="w-full max-w-xl mx-auto py-2 pb-40 sm:pb-44">
+              {/* Schéma horizontal flex — branche ADN dans le segment Banque–Bourse */}
+              <div className="w-full max-w-none sm:max-w-xl mx-auto py-1 pb-52 sm:pb-44 overflow-visible">
 
-                <div className="flex items-center w-full">
+                <div className="flex items-center w-full min-w-0">
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="shrink-0 w-[84px] sm:w-[96px]"
+                    className="shrink-0 basis-[22%] sm:basis-[24%] max-w-[96px] sm:max-w-[110px] min-w-0"
                   >
-                    <div className="bg-white border-2 border-swiss-navy px-2.5 py-3 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center">
+                    <div className="bg-white border-2 border-swiss-navy px-2 py-2.5 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center w-full">
                       <User className="h-4 w-4 text-swiss-navy mx-auto mb-1" />
-                      <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-widest text-swiss-navy">Client</h4>
-                      <p className="font-sans text-[8px] sm:text-[9px] text-slate-400 mt-0.5 leading-snug">Titulaire exclusif</p>
+                      <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-widest text-swiss-navy leading-tight">Client</h4>
+                      <p className="font-sans text-[9px] text-slate-400 mt-0.5 leading-snug">Titulaire exclusif</p>
                     </div>
                   </motion.div>
 
-                  <div className="h-[2px] flex-1 bg-swiss-blue min-w-[12px] shrink" aria-hidden="true" />
+                  <div className="h-[2px] flex-1 min-w-[8px] bg-swiss-blue shrink" aria-hidden="true" />
 
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.08 }}
-                    className="shrink-0 w-[108px] sm:w-[128px]"
+                    className="shrink-0 basis-[28%] sm:basis-[30%] max-w-[120px] sm:max-w-[140px] min-w-0"
                   >
-                    <div className="bg-white border-2 border-swiss-navy px-2.5 py-3 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center">
+                    <div className="bg-white border-2 border-swiss-navy px-2 py-2.5 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center w-full">
                       <Landmark className="h-4 w-4 text-swiss-navy mx-auto mb-1" />
                       <h4 className="font-sans font-extrabold text-[9px] sm:text-[10px] uppercase tracking-wider text-swiss-navy leading-snug">Banque dépositaire</h4>
-                      <p className="font-sans text-[8px] text-slate-400 mt-0.5">Conservation sûre</p>
+                      <p className="font-sans text-[9px] text-slate-400 mt-0.5 leading-snug">Conservation sûre</p>
                     </div>
                   </motion.div>
 
-                  {/* Trait Banque → Bourse + branche ADN en dessous */}
-                  <div className="flex-1 min-w-[12px] shrink relative flex items-center self-stretch">
-                    <div className="w-full h-[2px] bg-swiss-blue" aria-hidden="true" />
+                  {/* Segment Banque → Bourse + branche ADN (pleine largeur de ce segment) */}
+                  <div className="flex-1 min-w-[24px] shrink relative self-stretch min-h-[175px] sm:min-h-[195px] flex items-center">
+                    <div className="w-full h-[2px] bg-swiss-blue shrink-0" aria-hidden="true" />
 
-                    <div className="absolute left-0 right-0 top-1/2 flex flex-col items-center">
-                      <div className="flex justify-around w-full max-w-[210px]">
-                        <div className="flex flex-col items-center px-1">
-                          <div className="w-[2px] h-11 sm:h-14 bg-[#10b981]/75" />
-                          <p className="font-sans text-[8px] sm:text-[9px] uppercase tracking-wide text-slate-500 mt-2 text-center leading-tight max-w-[72px]">
+                    <div className="absolute left-0 right-0 top-1/2 w-full">
+                      <div className="flex justify-center items-start w-full gap-7 sm:gap-8">
+                        <div className="flex flex-col items-center gap-1 sm:gap-1.5">
+                          <div className="w-[2px] h-11 sm:h-14 bg-[#10b981]/80 shrink-0" />
+                          <p className="font-sans text-[8px] sm:text-[9px] uppercase tracking-wide text-slate-500 [writing-mode:vertical-rl] rotate-180 leading-none text-center">
                             Demande d&apos;achat
                           </p>
                         </div>
-                        <div className="flex flex-col items-center px-1">
-                          <div className="w-[2px] h-11 sm:h-14 bg-[#10b981]/75" />
-                          <p className="font-sans text-[8px] sm:text-[9px] uppercase tracking-wide text-slate-500 mt-2 text-center leading-tight max-w-[72px]">
+                        <div className="flex flex-col items-center gap-1 sm:gap-1.5">
+                          <div className="w-[2px] h-11 sm:h-14 bg-[#10b981]/80 shrink-0" />
+                          <p className="font-sans text-[8px] sm:text-[9px] uppercase tracking-wide text-slate-500 [writing-mode:vertical-rl] rotate-180 leading-none text-center">
                             Demande de vente
                           </p>
                         </div>
                       </div>
 
-                      <div className="w-[2px] h-7 bg-slate-300 mt-1" aria-hidden="true" />
+                      <div className="flex justify-center w-full mt-1">
+                        <div className="w-[2px] h-6 sm:h-7 bg-slate-300 shrink-0" aria-hidden="true" />
+                      </div>
 
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.28 }}
-                        className="mt-1"
+                        className="flex justify-center w-full mt-1"
                       >
-                        <div className="bg-emerald-50/60 border border-dashed border-[#10b981]/50 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl shadow-xs text-center w-[148px] sm:w-[165px]">
+                        <div className="bg-emerald-50/60 border border-dashed border-[#10b981]/50 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl shadow-xs text-center shrink-0 w-[148px] sm:w-[165px]">
                           <img src="/ADN.png" alt="ADN Finance" className="h-7 sm:h-8 w-auto mx-auto mb-1 object-contain" />
-                          <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-wider text-swiss-navy">ADN Finance</h4>
+                          <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-wider text-swiss-navy whitespace-normal">ADN Finance</h4>
                           <p className="font-sans text-[8px] uppercase tracking-widest text-[#10b981] font-bold mt-0.5">Mandat auxiliaire</p>
                         </div>
                       </motion.div>
@@ -566,17 +568,17 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.16 }}
-                    className="shrink-0 w-[76px] sm:w-[88px]"
+                    className="shrink-0 basis-[20%] sm:basis-[22%] max-w-[88px] sm:max-w-[100px] min-w-0"
                   >
-                    <div className="bg-white border-2 border-swiss-navy px-2.5 py-3 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center">
+                    <div className="bg-white border-2 border-swiss-navy px-2 py-2.5 sm:px-3 sm:py-3.5 rounded-xl shadow-sm text-center w-full">
                       <TrendingUp className="h-4 w-4 text-swiss-navy mx-auto mb-1" />
-                      <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-widest text-swiss-navy">Bourse</h4>
-                      <p className="font-sans text-[8px] sm:text-[9px] text-slate-400 mt-0.5">Marchés</p>
+                      <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-widest text-swiss-navy leading-tight">Bourse</h4>
+                      <p className="font-sans text-[9px] text-slate-400 mt-0.5 leading-snug">Marchés</p>
                     </div>
                   </motion.div>
                 </div>
 
-                <div className="hidden md:block text-slate-500 font-sans text-[10px] leading-relaxed pt-4 text-center mt-40 sm:mt-44">
+                <div className="hidden md:block text-slate-500 font-sans text-[10px] leading-relaxed pt-4 text-center md:mt-52 lg:mt-60">
                   <p className="max-w-md mx-auto py-1 px-3 bg-white border border-slate-100 italic">
                     <strong>Le Client ne dépend pas d&apos;ADN Finance :</strong> il est en relation directe avec sa banque dépositaire et la bourse. ADN intervient uniquement sur mandat d&apos;achat ou de vente, sans détention des fonds.
                   </p>
