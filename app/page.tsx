@@ -33,52 +33,6 @@ const COMPANY_META = {
   epargne: { name: 'Épargne Classique', color: '#f97316', label: 'Taux passifs suisses bas' },
 };
 
-// Simple Count-Up Component
-function CountingStat({ targetValue, duration = 1500, suffix = "" }: { targetValue: number; duration?: number; suffix?: string }) {
-  const [count, setCount] = React.useState(0);
-  const elementRef = React.useRef<HTMLSpanElement>(null);
-  const [hasAnimated, setHasAnimated] = React.useState(false);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          let start = 0;
-          const startTime = performance.now();
-
-          const animate = (currentTime: number) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            // Ease out quad formula
-            const currentCount = Math.floor(progress * (targetValue - start) + start);
-            setCount(currentCount);
-
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            } else {
-              setCount(targetValue);
-            }
-          };
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-    return () => observer.disconnect();
-  }, [targetValue, duration, hasAnimated]);
-
-  return (
-    <span ref={elementRef} className="font-display font-light text-5xl sm:text-6xl text-swiss-navy">
-      {count}{suffix}
-    </span>
-  );
-}
-
 // Single Question/Answer Accordion
 function FAQItem({ question, answer, isOpen, onToggle }: { question: string; answer: string; isOpen: boolean; onToggle: () => void }) {
   return (
@@ -435,7 +389,7 @@ export default function HomePage() {
     <div className="flex flex-col bg-white" id="adn-homepage">
       
       {/* 0. IMMERSIVE VIDEO BUCKET SECTION - ALWAYS FIRST, NO TEXT, FULLSCREEN COVERAGE */}
-      <section className="relative w-full h-[75vh] sm:h-screen overflow-hidden bg-swiss-navy" id="top-immersive-video">
+      <section className="relative w-full bg-swiss-navy sm:h-screen sm:overflow-hidden" id="top-immersive-video">
         {/* Vidéo pour ordinateurs et tablettes */}
         <video
           autoPlay
@@ -447,13 +401,13 @@ export default function HomePage() {
           <source src="/Video_1.mp4" type="video/mp4" />
         </video>
 
-        {/* Vidéo pour smartphones (mobile) */}
+        {/* Vidéo pour smartphones (mobile) — pleine largeur, sans zoom */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none block sm:hidden"
+          className="w-full h-auto block sm:hidden z-0 pointer-events-none"
         >
           <source src="/video_2.mp4" type="video/mp4" />
         </video>
@@ -673,40 +627,31 @@ export default function HomePage() {
             
             {/* Stat 1 */}
             <div className="bg-white border border-slate-100 p-8 flex flex-col items-center justify-center">
-              <div className="flex items-baseline justify-center">
-                <CountingStat targetValue={100} suffix="%" />
-              </div>
-              <p className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-swiss-blue mt-4">
-                Indépendant
+              <p className="font-sans text-xs sm:text-sm font-bold tracking-widest text-swiss-blue">
+                Indépendance
               </p>
-              <p className="font-sans text-xs text-slate-400 mt-2 max-w-[200px]">
-                Zéro commissions bancaires cachées de tiers.
+              <p className="font-sans text-xs text-slate-400 mt-4 max-w-[220px]">
+                Des recommandations guidées par vos intérêts.
               </p>
             </div>
 
             {/* Stat 2 */}
             <div className="bg-white border border-slate-100 p-8 flex flex-col items-center justify-center">
-              <div className="flex items-baseline justify-center">
-                <CountingStat targetValue={650} />
-              </div>
-              <p className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-swiss-blue mt-4">
-                Clients nous font confiance
+              <p className="font-sans text-xs sm:text-sm font-bold tracking-widest text-swiss-blue">
+                Supervision FINMA
               </p>
-              <p className="font-sans text-xs text-slate-400 mt-2 max-w-[200px]">
-                Des relations basées sur la discrétion absolue.
+              <p className="font-sans text-xs text-slate-400 mt-4 max-w-[220px]">
+                Gestionnaire de fortune inscrit au registre suisse.
               </p>
             </div>
 
             {/* Stat 3 */}
             <div className="bg-white border border-slate-100 p-8 flex flex-col items-center justify-center">
-              <div className="flex items-baseline justify-center">
-                <CountingStat targetValue={25} suffix=" ans" />
-              </div>
-              <p className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-swiss-blue mt-4">
-                D&apos;expérience
+              <p className="font-sans text-xs sm:text-sm font-bold tracking-widest text-swiss-blue">
+                LSFin &amp; LEFin
               </p>
-              <p className="font-sans text-xs text-slate-400 mt-2 max-w-[200px]">
-                Rigueur de conduite helvétique éprouvée.
+              <p className="font-sans text-xs text-slate-400 mt-4 max-w-[220px]">
+                Une activité exercée dans le respect du cadre réglementaire suisse.
               </p>
             </div>
 
