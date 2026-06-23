@@ -386,25 +386,25 @@ export default function HomePage() {
     <div className="flex flex-col bg-white" id="adn-homepage">
       
       {/* 0. IMMERSIVE VIDEO BUCKET SECTION - ALWAYS FIRST, NO TEXT, FULLSCREEN COVERAGE */}
-      <section className="relative w-full bg-swiss-navy sm:h-screen sm:overflow-hidden" id="top-immersive-video">
-        {/* Vidéo pour ordinateurs et tablettes */}
+      <section className="relative w-full bg-swiss-navy lg:h-screen lg:overflow-hidden" id="top-immersive-video">
+        {/* Vidéo plein écran pour grands écrans (desktop) */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover object-bottom z-0 pointer-events-none hidden sm:block"
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none hidden lg:block"
         >
           <source src="/Video_1.mp4" type="video/mp4" />
         </video>
 
-        {/* Vidéo pour smartphones (mobile) — pleine largeur, sans zoom */}
+        {/* Vidéo pour smartphones et tablettes — pleine largeur, sans recadrage */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-auto block sm:hidden z-0 pointer-events-none"
+          className="w-full h-auto block lg:hidden z-0 pointer-events-none"
         >
           <source src="/video_2.mp4" type="video/mp4" />
         </video>
