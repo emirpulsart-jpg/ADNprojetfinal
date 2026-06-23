@@ -32,7 +32,7 @@ export default function MentionsLegalesPage() {
               ADN FINANCE SA<br />
               Quai Gustave-Ador, 62<br />
               1207 Genève, Suisse<br />
-              Téléphone : <a href="tel:+41225758747" className="text-swiss-blue hover:underline">00 41 22 575 87 47</a><br />
+              Téléphone : <a href="tel:+41225758747" className="text-swiss-blue hover:underline">+41 22 575 87 47</a><br />
               E-mail : <a href="mailto:info@adnfinance.ch" className="text-swiss-blue hover:underline">info@adnfinance.ch</a>
             </p>
           </section>

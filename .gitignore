@@ -5,3 +5,10 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Vidéos public/ — conserver uniquement les deux héros déjà sur GitHub
+public/**/*.mp4
+!public/Video_1.mp4
+!public/video_2.mp4
+public/**/*.webm
+public/**/*.mov

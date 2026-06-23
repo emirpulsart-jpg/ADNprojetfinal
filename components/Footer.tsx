@@ -24,16 +24,15 @@ export default function Footer() {
           
           {/* Brand block (Span 5) */}
           <div className="md:col-span-5 space-y-6">
-            <div className="flex items-center gap-3">
-              <img src="/ADN.png" alt="ADN Logo" className="h-10 w-auto object-contain bg-transparent brightness-0 invert" />
-              <div className="flex flex-col">
-                <span className="text-[11px] uppercase tracking-[0.25em] font-extrabold text-white leading-none mb-0.5">
-                  ADN
-                </span>
-                <span className="text-[8px] uppercase tracking-[0.2em] text-[#10b981] font-bold leading-none">
-                  FINANCE SA
-                </span>
-              </div>
+            <div className="flex flex-col items-center gap-1 w-fit">
+              <img
+                src="/ADN.png"
+                alt="ADN"
+                className="h-9 w-auto object-contain bg-transparent brightness-0 invert"
+              />
+              <span className="font-sans text-[9px] uppercase tracking-[0.18em] font-medium leading-none text-white">
+                ADN FINANCE SA
+              </span>
             </div>
             
             <p className="text-sm text-slate-300 font-sans leading-relaxed max-w-md">
@@ -95,7 +94,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-[#10b981] shrink-0" />
-                <a href="tel:+41225758747" className="hover:text-white transition-colors">00 41 22 575 87 47</a>
+                <a href="tel:+41225758747" className="hover:text-white transition-colors">+41 22 575 87 47</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-[#10b981] shrink-0" />
@@ -125,7 +124,27 @@ export default function Footer() {
             <Link href="/planificateur-dinterets-composes" className="hover:text-white transition-colors">Planificateur d&apos;intérêts composés</Link>
             <Link href="/protection-des-donnees" className="hover:text-white transition-colors">Protection des Données</Link>
             <Link href="/mentions-legales" className="hover:text-white transition-colors">Mentions légales</Link>
+            <a
+              href="https://www.swissbanking.ch/_Resources/Persistent/c/6/c/8/c6c8088972fdd9f624e8e877dfa28424d8b8d887/ASB_Risques_inherents_au_commerce_instruments_financiers_2023_FR.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              Risques particuliers dans le négoce des titres
+            </a>
           </div>
+        </div>
+
+        <div className="mt-4 text-center font-sans text-[10px] text-slate-500 tracking-wide">
+          Développé par{' '}
+          <a
+            href="https://novaris-studio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-400 hover:text-[#10b981] transition-colors"
+          >
+            Novaris Studio
+          </a>
         </div>
 
       </div>

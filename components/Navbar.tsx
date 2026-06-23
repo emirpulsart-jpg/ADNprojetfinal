@@ -96,21 +96,16 @@ export default function Navbar() {
         <div className="flex h-20 items-center justify-between">
           
           {/* Logo Brand: ADN */}
-          <Link href="/" className="flex items-center gap-3 group animate-fade-in" id="nav-logo">
-            <div className="flex items-center gap-3">
+          <Link href="/" className="group animate-fade-in shrink-0" id="nav-logo">
+            <div className="flex flex-col items-center gap-1">
               <img
                 src="/ADN.png"
-                alt="ADN Logo"
-                className="h-10 w-auto object-contain bg-transparent transition-all duration-300"
+                alt="ADN"
+                className="h-9 w-auto object-contain bg-transparent transition-all duration-300"
               />
-              <div className="flex flex-col">
-                <span className="text-xs uppercase tracking-[0.25em] font-extrabold leading-none mb-0.5 text-swiss-navy">
-                  ADN
-                </span>
-                <span className="text-[8px] uppercase tracking-[0.2em] font-bold leading-none text-[#10b981]">
-                  FINANCE SA
-                </span>
-              </div>
+              <span className="font-sans text-[9px] uppercase tracking-[0.18em] font-medium leading-none text-black">
+                ADN FINANCE SA
+              </span>
             </div>
           </Link>
 

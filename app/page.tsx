@@ -541,7 +541,7 @@ export default function HomePage() {
                       >
                         <div className="bg-emerald-50/60 border border-dashed border-[#10b981]/50 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl shadow-xs text-center shrink-0 w-[148px] sm:w-[165px]">
                           <img src="/ADN.png" alt="ADN Finance" className="h-7 sm:h-8 w-auto mx-auto mb-1 object-contain" />
-                          <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-wider text-swiss-navy whitespace-normal">ADN Finance</h4>
+                          <h4 className="font-sans font-extrabold text-[10px] sm:text-xs uppercase tracking-wider text-swiss-navy whitespace-normal">ADN FINANCE SA</h4>
                           <p className="font-sans text-[8px] uppercase tracking-widest text-[#10b981] font-bold mt-0.5">Mandat auxiliaire</p>
                         </div>
                       </motion.div>
@@ -634,7 +634,7 @@ export default function HomePage() {
           
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="font-sans text-xs font-bold uppercase tracking-[0.25em] text-[#10b981] block mb-2">
-              Solutions d&apos;Allocation Rigoireuse
+              Solutions d&apos;Allocation Rigoureuse
             </span>
             <h2 className="font-display text-2.5xl sm:text-3.5xl font-light text-swiss-navy tracking-tight">
               Nos services de gestion s’adaptent aux clients

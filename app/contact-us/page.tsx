@@ -75,7 +75,7 @@ export default function ContactPage() {
                 <div>
                   <h4 className="font-bold text-swiss-navy">Téléphone</h4>
                   <p className="text-gray-600">
-                    <a href="tel:+41225758747" className="hover:text-swiss-blue font-semibold transition-colors">00 41 22 575 87 47</a>
+                    <a href="tel:+41225758747" className="hover:text-swiss-blue font-semibold transition-colors">+41 22 575 87 47</a>
                   </p>
                 </div>
               </div>
