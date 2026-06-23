@@ -101,16 +101,16 @@ export default function Navbar() {
               <img
                 src="/ADN.png"
                 alt="ADN"
-                className="h-9 w-auto object-contain bg-transparent transition-all duration-300"
+                className="h-8 w-auto object-contain bg-transparent transition-all duration-300 lg:h-9"
               />
-              <span className="font-sans text-[9px] uppercase tracking-[0.18em] font-medium leading-none text-black">
+              <span className="font-sans text-[8px] uppercase tracking-[0.16em] font-medium leading-none text-black lg:text-[9px] lg:tracking-[0.18em]">
                 ADN FINANCE SA
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8" id="desktop-menu">
+          {/* Desktop Navigation — grands écrans uniquement */}
+          <div className="hidden lg:flex items-center gap-8" id="desktop-menu">
             {navItems.map((item) => {
               if (item.isDropdown) {
                 return (
@@ -181,7 +181,7 @@ export default function Navbar() {
           </div>
 
           {/* Call to Action - Right Side */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/contact-us"
               className="inline-flex h-10 items-center justify-center px-5 py-2 text-[11px] uppercase tracking-widest font-bold transition-all duration-300 bg-swiss-navy text-white hover:bg-swiss-blue"
@@ -190,8 +190,8 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
+          {/* Mobile / tablette — menu hamburger */}
+          <div className="flex lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
@@ -210,9 +210,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer menu */}
+      {/* Menu déroulant mobile et tablette */}
       {isOpen && (
-        <div className="md:hidden border-t border-slate-100 bg-white" id="mobile-menu">
+        <div className="lg:hidden border-t border-slate-100 bg-white" id="mobile-menu">
           <div className="space-y-1.5 px-6 py-6 pb-8">
             {navItems.map((item) => {
               if (item.isDropdown) {
